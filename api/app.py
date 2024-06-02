@@ -8,7 +8,6 @@ from .migrate import migrate
 from . import models
 
 from .resources.book import books as BookBlueprint
-from .resources.store import stores as StoreBlueprint
 
 
 def create_app(db_url=None):
@@ -21,6 +20,7 @@ def create_app(db_url=None):
     app.config[
         "OPENAPI_SWAGGER_UI_URL"
     ] = "https://cdn.jsdelivr.net/npm/swagger-ui-dist/"
+    app.url_map.strict_slashes = False  # Disable strict slashes
 
     # Check if running inside a Docker container
     if os.getenv('DOCKER_CONTAINER') != None:
@@ -28,7 +28,6 @@ def create_app(db_url=None):
         dotenv_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), '.env')
         load_dotenv(dotenv_path)
         database_url = os.getenv('DATABASE_URL') 
-        print("env")
     else:
         # Load .flaskenv file in the api directory (for local development)
         dotenv_path = os.path.join(os.path.dirname(__file__), '.flaskenv')
@@ -50,8 +49,6 @@ def create_app(db_url=None):
 
     # Register blueprints with the app
     app.register_blueprint(BookBlueprint, url_prefix='/books')
-    app.register_blueprint(StoreBlueprint, url_prefix='/stores')
-
     return app
 
 

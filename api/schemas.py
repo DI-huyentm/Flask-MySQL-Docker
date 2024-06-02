@@ -10,9 +10,6 @@ class PlainBookSchema(BaseModel):
     image: str
     description: Optional[str] = None  # field can be either a string or None
 
-class PlainStoreSchema(BaseModel):
-    id: int
-    name: str
 
 class BookSchema(PlainBookSchema):
     title: str
@@ -29,7 +26,4 @@ class BookUpdateSchema(BaseModel):
     image: Optional[str] = None
     description: Optional[str] = None
 
-class StoreSchema(BaseModel):
-    # id: int
-    name: str
 

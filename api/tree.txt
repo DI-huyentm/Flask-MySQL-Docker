@@ -1,0 +1,33 @@
+.
+├── Dockerfile
+├── __init__.py
+├── __pycache__
+│   ├── __init__.cpython-312.pyc
+│   ├── app.cpython-312.pyc
+│   ├── db.cpython-312.pyc
+│   └── migrate.cpython-312.pyc
+├── app.py
+├── data_dump.sql
+├── db.py
+├── manage.py
+├── migrate.py
+├── migrations
+│   ├── README
+│   ├── alembic.ini
+│   ├── env.py
+│   └── script.py.mako
+├── models
+│   ├── __init__.py
+│   ├── __pycache__
+│   │   ├── __init__.cpython-312.pyc
+│   │   └── books.cpython-312.pyc
+│   ├── books.py
+│   ├── bookstore.py
+│   └── stores.py
+├── requirements.txt
+├── resources
+│   ├── __init__.py
+│   ├── book.py
+│   └── store.py
+├── schemas.py
+├── tree.txt

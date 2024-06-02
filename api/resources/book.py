@@ -4,7 +4,7 @@ from flask.views import MethodView
 # from sqlalchemy.exc import SQLAlchemyError
 
 from ..db import db
-from ..models import BookModel, BookStoreModel, StoreModel
+from ..models import BookModel
 from ..schemas import BookSchema, BookUpdateSchema
 from pydantic import ValidationError
 
@@ -44,22 +44,6 @@ def get_a_book(book_id):
         'description': book.description
     })
 
-@books.route('/<int:book_id>/stores', methods=['GET'])
-def get_stores_available(book_id):
-    book = BookModel.query.get(book_id)
-    if book is None:
-        return jsonify(message="Book not found"), 404
-    stores = BookStoreModel.query.filter_by(book_id=book.id).all()
-    stores_id_dict = [store.store_id for store in stores]
-    stores_dict = []
-    for store_id in stores_id_dict:
-        store = StoreModel.query.filter_by(id=store_id).first()
-        store_data = {
-            'id': store.id,
-            'name': store.name
-        }
-        stores_dict.append(store_data)
-    return jsonify(stores_dict), 200
 
 @books.route('/', methods=['POST'])
 def create_new_book():
