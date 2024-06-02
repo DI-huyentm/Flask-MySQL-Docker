@@ -1,5 +1,5 @@
-api\migrations\__pycache__\
-api\__pycache__\
-api\models\__pycache__\
-api\resources\__pycache__\
-api\venv
+api/migrations/__pycache__/
+api/__pycache__/
+api/models/__pycache__/
+api/resources/__pycache__/
+api/venv
