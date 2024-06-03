@@ -8,28 +8,28 @@ CREATE TABLE books (
     description VARCHAR(1000)
 );
 
--- Create the stores table
-CREATE TABLE stores (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(255)
-);
+-- -- Create the stores table
+-- CREATE TABLE stores (
+--     id INT AUTO_INCREMENT PRIMARY KEY,
+--     name VARCHAR(255)
+-- );
 
--- Create the bookstore table (junction table for many-to-many relationship)
-CREATE TABLE bookstore (
-    book_id INT,
-    store_id INT,
-    quantity INT DEFAULT 0,
-    PRIMARY KEY (book_id, store_id),
-    FOREIGN KEY (book_id) REFERENCES books(id) ON DELETE CASCADE,
-    FOREIGN KEY (store_id) REFERENCES stores(id) ON DELETE CASCADE
-);
+-- -- Create the bookstore table (junction table for many-to-many relationship)
+-- CREATE TABLE bookstore (
+--     book_id INT,
+--     store_id INT,
+--     quantity INT DEFAULT 0,
+--     PRIMARY KEY (book_id, store_id),
+--     FOREIGN KEY (book_id) REFERENCES books(id) ON DELETE CASCADE,
+--     FOREIGN KEY (store_id) REFERENCES stores(id) ON DELETE CASCADE
+-- );
 
 
-INSERT INTO stores (name) VALUES
-('Hanoi'),
-('HaiPhong'),
-('QuangNinh'),
-('HoChiMinh');
+-- INSERT INTO stores (name) VALUES
+-- ('Hanoi'),
+-- ('HaiPhong'),
+-- ('QuangNinh'),
+-- ('HoChiMinh');
 
 
 INSERT INTO books (title, author, price, image, description) VALUES
@@ -43,13 +43,13 @@ INSERT INTO books (title, author, price, image, description) VALUES
 ('My Sisters Hand In Mine', 'French Warren', 270000,  'https://1960sdaysofrage.files.wordpress.com/2017/06/brautigancover.jpeg', 'Much about the Paris described in previous chapters was unknown to the Americans who invaded the city following World War I: these newcomers were little interested in the “French” aspect of Paris. They sought respite from an America they found to be politically naive, puritanically restrictive, and culturally deprived. For some, the need for escape was itself a sign of self-destructive tendencies. For others, expatriation meant real liberation. For women, America was a particularly oppressive environment, and among the expatriate women were those who took up Edith Whartons “argument with America” on “the woman question,” finding in...'),
 ('Two Serious Ladies', 'Fritz James', 100000,  'https://mpd-biblio-covers.imgix.net/9780312277109.jpg?w=300', 'Gertrude Stem wrote in Paris France that “every century has a beginning and a middle and an ending. ... it begins that is it has a childhood it has an adolescence it has an adult life, it has a middle life and an older life and then it ends” (116). The birth of the twentieth century coincided with Stein emergence into adulthood; by the time the twentieth century reached its middle age, Stein was dead of cancer in Paris. When she arrived in that city in 1903, the nineteenth century was in its death throes; Paris, like other Kuropean...');
 
-INSERT INTO bookstore(book_id, store_id, quantity) VALUES
-(1,1,100),
-(2,1,100),
-(3,2,400),
-(4,1,300),
-(5,2,200),
-(6,3,600),
-(7,4,200),
-(8,3,500),
-(9,4,800);
+-- INSERT INTO bookstore(book_id, store_id, quantity) VALUES
+-- (1,1,100),
+-- (2,1,100),
+-- (3,2,400),
+-- (4,1,300),
+-- (5,2,200),
+-- (6,3,600),
+-- (7,4,200),
+-- (8,3,500),
+-- (9,4,800);
