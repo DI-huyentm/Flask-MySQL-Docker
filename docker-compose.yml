@@ -1,0 +1,68 @@
+version: "3.8"
+
+services:
+  db:
+    image: mysql:8.0
+    environment:
+      MYSQL_DATABASE: bookstoreflask
+      MYSQL_ROOT_PASSWORD: Mh28032002
+
+    ports:
+      - "3306:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+      - ./db:/docker-entrypoint-initdb.d
+
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "mysqladmin",
+          "ping",
+          "-h",
+          "localhost",
+          "-u",
+          "root",
+          "-pMh28032002",
+        ]
+      interval: 20s
+      timeout: 5s
+      retries: 4
+
+  api:
+    build:
+      context: ./api
+
+    volumes:
+      - /app/__pycache__
+    command: flask run
+    environment:
+      FLASK_ENV: development
+      FLASK_APP: ${FLASK_APP}
+      FLASK_RUN_HOST: 0.0.0.0
+      FLASK_RUN_PORT: 5000
+      FLASK_DEBUG: ${FLASK_DEBUG}
+      DATABASE_URL: ${DATABASE_URL}
+      DOCKER_CONTAINER: "true"
+
+    ports:
+      - "5000:5000"
+    depends_on:
+      db:
+        condition: service_healthy
+
+  web:
+    build:
+      context: ./web
+    volumes:
+      - ./web:/app
+      - /app/node_modules
+    ports:
+      - "3000:3000"
+    stdin_open: true
+    tty: true
+    depends_on:
+      - api
+
+volumes:
+  db_data:
