@@ -7,7 +7,7 @@ function BooksPage() {
   useEffect(() => {
     // Fetch book data from backend API when component mounts
     axios
-      .get("http://localhost:5000/api/books")
+      .get("http://api:5000/api/books")
       .then((response) => {
         setBooks(response.data.data.books);
       })

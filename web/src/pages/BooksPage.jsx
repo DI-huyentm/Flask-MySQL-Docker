@@ -6,7 +6,6 @@ import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
-import Paper from "@mui/material/Paper";
 import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
@@ -22,21 +21,6 @@ const lightGray = "#f2f2f2";
 const gray = "#cccccc";
 const green = "#4caf50";
 const white = "#ffffff";
-
-// const initialState = [
-//   {
-//     id: 1,
-//     name: "John Doe",
-//     gender: "Male",
-//     school: "Example University",
-//   },
-//   {
-//     id: 2,
-//     name: "Jane Smith",
-//     gender: "Female",
-//     school: "Another University",
-//   },
-// ];
 
 function BooksPage() {
   const [books, setBooks] = useState([]);
